@@ -641,3 +641,116 @@ events:
       Running the CXX compiler's linker: "Configured with: ../configure --prefix=/R/winlibs64ucrt_stage/inst_gcc-14.1.0/share/gcc --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --enable-offload-targets=nvptx-none --with-pkgversion='MinGW-W64 x86_64-ucrt-posix-seh, built by Brecht Sanders, r3' --with-tune=generic --enable-checking=release --enable-threads=posix --disable-sjlj-exceptions --disable-libunwind-exceptions --disable-serial-configure --disable-bootstrap --enable-host-shared --enable-plugin --disable-default-ssp --disable-rpath --disable-libstdcxx-debug --disable-version-specific-runtime-libs --with-stabs --disable-symvers --enable-languages=c,c++,fortran,lto,objc,obj-c++ --disable-gold --disable-nls --disable-stage1-checking --disable-win32-registry --disable-multilib --enable-ld --enable-libquadmath --enable-libada --enable-libssp --enable-libstdcxx --enable-lto --enable-fully-dynamic-string --enable-libgomp --enable-graphite --enable-mingw-wildcard --enable-libstdcxx-time --enable-libstdcxx-pch --with-mpc=/d/Prog/winlibs64ucrt_stage/custombuilt --with-mpfr=/d/Prog/winlibs64ucrt_stage/custombuilt --with-gmp=/d/Prog/winlibs64ucrt_stage/custombuilt --with-isl=/d/Prog/winlibs64ucrt_stage/custombuilt --disable-libstdcxx-backtrace --enable-install-libiberty --enable-__cxa_atexit --without-included-gettext --with-diagnostics-color=auto --enable-clocale=generic --with-libiconv --with-system-zlib --with-build-sysroot=/R/winlibs64ucrt_stage/gcc-14.1.0/build_mingw/mingw-w64 CFLAGS='-D__USE_MINGW_ANSI_STDIO=0 -I/d/Prog/winlibs64ucrt_stage/custombuilt/include/libdl-win32   -march=nocona -msahf -mtune=generic -O2 -Wno-error=format' CXXFLAGS='-D__USE_MINGW_ANSI_STDIO=0 -Wno-int-conversion  -march=nocona -msahf -mtune=generic -O2' LDFLAGS='-pthread -Wl,--no-insert-timestamp -Wl,--dynamicbase -Wl,--high-entropy-va -Wl,--nxcompat -Wl,--tsaware' LD=/d/Prog/winlibs64ucrt_stage/custombuilt/share/binutils/bin/ld.exe" "--version"
       
 ...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/mingw64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "C:/mingw64/share/cmake-3.30/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "C:/mingw64/share/cmake-3.30/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "external/raylib/cmake/AddIfFlagCompiles.cmake:3 (CHECK_C_COMPILER_FLAG)"
+      - "external/raylib/cmake/CompilerFlags.cmake:5 (add_if_flag_compiles)"
+      - "external/raylib/CMakeLists.txt:34 (include)"
+    checks:
+      - "Performing Test COMPILER_HAS_THOSE_TOGGLES"
+    directories:
+      source: "C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/CMakeFiles/CMakeScratch/TryCompile-wdysnw"
+      binary: "C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/CMakeFiles/CMakeScratch/TryCompile-wdysnw"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/cmake"
+    buildResult:
+      variable: "COMPILER_HAS_THOSE_TOGGLES"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/CMakeFiles/CMakeScratch/TryCompile-wdysnw'
+        
+        Run Build Command(s): C:/mingw64/bin/ninja.exe -v cmTC_e85d7
+        [1/2] C:\\mingw64\\bin\\gcc.exe -DCOMPILER_HAS_THOSE_TOGGLES  -Werror=pointer-arith -o CMakeFiles/cmTC_e85d7.dir/src.c.obj -c "C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/CMakeFiles/CMakeScratch/TryCompile-wdysnw/src.c"
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\mingw64\\bin\\gcc.exe   CMakeFiles/cmTC_e85d7.dir/src.c.obj -o cmTC_e85d7.exe -Wl,--out-implib,libcmTC_e85d7.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/mingw64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "C:/mingw64/share/cmake-3.30/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "C:/mingw64/share/cmake-3.30/Modules/FindThreads.cmake:97 (CHECK_C_SOURCE_COMPILES)"
+      - "C:/mingw64/share/cmake-3.30/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "external/raylib/src/external/glfw/CMakeLists.txt:60 (find_package)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/CMakeFiles/CMakeScratch/TryCompile-qmfdxi"
+      binary: "C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/CMakeFiles/CMakeScratch/TryCompile-qmfdxi"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith "
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/cmake;C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/CMake/modules"
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/CMakeFiles/CMakeScratch/TryCompile-qmfdxi'
+        
+        Run Build Command(s): C:/mingw64/bin/ninja.exe -v cmTC_b8f09
+        [1/2] C:\\mingw64\\bin\\gcc.exe -DCMAKE_HAVE_LIBC_PTHREAD  -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith -o CMakeFiles/cmTC_b8f09.dir/src.c.obj -c "C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/CMakeFiles/CMakeScratch/TryCompile-qmfdxi/src.c"
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\mingw64\\bin\\gcc.exe -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  CMakeFiles/cmTC_b8f09.dir/src.c.obj -o cmTC_b8f09.exe -Wl,--out-implib,libcmTC_b8f09.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/mingw64/share/cmake-3.30/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "external/raylib/src/external/glfw/src/CMakeLists.txt:274 (check_include_file)"
+    checks:
+      - "Looking for dinput.h"
+    directories:
+      source: "C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/CMakeFiles/CMakeScratch/TryCompile-y54wdm"
+      binary: "C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/CMakeFiles/CMakeScratch/TryCompile-y54wdm"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith "
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/cmake;C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/CMake/modules"
+    buildResult:
+      variable: "DINPUT_H_FOUND"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/CMakeFiles/CMakeScratch/TryCompile-y54wdm'
+        
+        Run Build Command(s): C:/mingw64/bin/ninja.exe -v cmTC_4c9d7
+        [1/2] C:\\mingw64\\bin\\gcc.exe   -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith   -std=gnu99 -o CMakeFiles/cmTC_4c9d7.dir/CheckIncludeFile.c.obj -c "C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/CMakeFiles/CMakeScratch/TryCompile-y54wdm/CheckIncludeFile.c"
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\mingw64\\bin\\gcc.exe -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  CMakeFiles/cmTC_4c9d7.dir/CheckIncludeFile.c.obj -o cmTC_4c9d7.exe -Wl,--out-implib,libcmTC_4c9d7.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/mingw64/share/cmake-3.30/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "external/raylib/src/external/glfw/src/CMakeLists.txt:275 (check_include_file)"
+    checks:
+      - "Looking for xinput.h"
+    directories:
+      source: "C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/CMakeFiles/CMakeScratch/TryCompile-k540wp"
+      binary: "C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/CMakeFiles/CMakeScratch/TryCompile-k540wp"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith "
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/cmake;C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/CMake/modules"
+    buildResult:
+      variable: "XINPUT_H_FOUND"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/CMakeFiles/CMakeScratch/TryCompile-k540wp'
+        
+        Run Build Command(s): C:/mingw64/bin/ninja.exe -v cmTC_401cf
+        [1/2] C:\\mingw64\\bin\\gcc.exe   -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith   -std=gnu99 -o CMakeFiles/cmTC_401cf.dir/CheckIncludeFile.c.obj -c "C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/CMakeFiles/CMakeScratch/TryCompile-k540wp/CheckIncludeFile.c"
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\mingw64\\bin\\gcc.exe -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  CMakeFiles/cmTC_401cf.dir/CheckIncludeFile.c.obj -o cmTC_401cf.exe -Wl,--out-implib,libcmTC_401cf.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+...

@@ -13,11 +13,13 @@
 	{
 		"commands" : 
 		[
-			"add_executable"
+			"add_executable",
+			"target_link_libraries"
 		],
 		"files" : 
 		[
-			"CMakeLists.txt"
+			"CMakeLists.txt",
+			"external/raylib/src/CMakeLists.txt"
 		],
 		"nodes" : 
 		[
@@ -29,6 +31,21 @@
 				"file" : 0,
 				"line" : 6,
 				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 9,
+				"parent" : 0
+			},
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 93,
+				"parent" : 3
 			}
 		]
 	},
@@ -39,6 +56,28 @@
 			[
 				{
 					"fragment" : "-g"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 2,
+					"define" : "GRAPHICS_API_OPENGL_33"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "PLATFORM_DESKTOP"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 2,
+					"path" : "C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/include"
 				}
 			],
 			"language" : "CXX",
@@ -56,6 +95,17 @@
 			]
 		}
 	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "raylib::@e0062cae9a75ca0a10b0"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "glfw::@0caa76eb0594e07c8f96"
+		}
+	],
 	"id" : "Raylib_Test::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
@@ -68,6 +118,26 @@
 			{
 				"fragment" : "",
 				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "external\\raylib\\raylib\\libraylib.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-lopengl32",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-lglu32",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-lwinmm",
+				"role" : "libraries"
 			},
 			{
 				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",

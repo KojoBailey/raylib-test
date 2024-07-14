@@ -47,11 +47,13 @@ cmake_ninja_workdir = C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ t
 #############################################
 # Order-only phony target for Raylib_Test
 
-build cmake_object_order_depends_target_Raylib_Test: phony || .
+build cmake_object_order_depends_target_Raylib_Test: phony || cmake_object_order_depends_target_glfw cmake_object_order_depends_target_raylib
 
 build CMakeFiles/Raylib_Test.dir/src/main.cpp.obj: CXX_COMPILER__Raylib_Test_unscanned_Debug C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/src/main.cpp || cmake_object_order_depends_target_Raylib_Test
+  DEFINES = -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP
   DEP_FILE = CMakeFiles\Raylib_Test.dir\src\main.cpp.obj.d
   FLAGS = -g
+  INCLUDES = -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/include"
   OBJECT_DIR = CMakeFiles\Raylib_Test.dir
   OBJECT_FILE_DIR = CMakeFiles\Raylib_Test.dir\src
 
@@ -63,15 +65,39 @@ build CMakeFiles/Raylib_Test.dir/src/main.cpp.obj: CXX_COMPILER__Raylib_Test_uns
 #############################################
 # Link the executable Raylib_Test.exe
 
-build Raylib_Test.exe: CXX_EXECUTABLE_LINKER__Raylib_Test_Debug CMakeFiles/Raylib_Test.dir/src/main.cpp.obj
+build Raylib_Test.exe: CXX_EXECUTABLE_LINKER__Raylib_Test_Debug CMakeFiles/Raylib_Test.dir/src/main.cpp.obj | external/raylib/raylib/libraylib.a || external/raylib/raylib/external/glfw/src/glfw external/raylib/raylib/libraylib.a
   FLAGS = -g
-  LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  LINK_LIBRARIES = external/raylib/raylib/libraylib.a  -lopengl32  -lglu32  -lwinmm  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Raylib_Test.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
   TARGET_FILE = Raylib_Test.exe
   TARGET_IMPLIB = libRaylib_Test.dll.a
   TARGET_PDB = Raylib_Test.exe.dbg
+
+
+#############################################
+# Utility command for package
+
+build CMakeFiles/package.util: CUSTOM_COMMAND all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test\build" && C:\mingw64\bin\cpack.exe --config ./CPackConfig.cmake"
+  DESC = Run CPack packaging tool...
+  pool = console
+  restat = 1
+
+build package: phony CMakeFiles/package.util
+
+
+#############################################
+# Utility command for package_source
+
+build CMakeFiles/package_source.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test\build" && C:\mingw64\bin\cpack.exe --config ./CPackSourceConfig.cmake "C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/CPackSourceConfig.cmake""
+  DESC = Run CPack packaging tool for source...
+  pool = console
+  restat = 1
+
+build package_source: phony CMakeFiles/package_source.util
 
 
 #############################################
@@ -96,10 +122,730 @@ build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
 
 build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
+
+#############################################
+# Utility command for list_install_components
+
+build list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build CMakeFiles/install.util: CUSTOM_COMMAND all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test\build" && C:\mingw64\bin\cmake.exe -P cmake_install.cmake"
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build install: phony CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build CMakeFiles/install/local.util: CUSTOM_COMMAND all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test\build" && C:\mingw64\bin\cmake.exe -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build install/local: phony CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build CMakeFiles/install/strip.util: CUSTOM_COMMAND all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test\build" && C:\mingw64\bin\cmake.exe -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build install/strip: phony CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for uninstall
+
+build external/raylib/uninstall: phony external/raylib/CMakeFiles/uninstall
+
+
+#############################################
+# Utility command for package
+
+build external/raylib/CMakeFiles/package.util: CUSTOM_COMMAND external/raylib/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test\build" && C:\mingw64\bin\cpack.exe --config ./CPackConfig.cmake"
+  DESC = Run CPack packaging tool...
+  pool = console
+  restat = 1
+
+build external/raylib/package: phony external/raylib/CMakeFiles/package.util
+
+
+#############################################
+# Utility command for package_source
+
+build external/raylib/CMakeFiles/package_source.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test\build" && C:\mingw64\bin\cpack.exe --config ./CPackSourceConfig.cmake "C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/CPackSourceConfig.cmake""
+  DESC = Run CPack packaging tool for source...
+  pool = console
+  restat = 1
+
+build external/raylib/package_source: phony external/raylib/CMakeFiles/package_source.util
+
+
+#############################################
+# Utility command for edit_cache
+
+build external/raylib/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test\build\external\raylib" && C:\mingw64\bin\cmake.exe -E echo "No interactive CMake dialog available.""
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build external/raylib/edit_cache: phony external/raylib/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build external/raylib/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test\build\external\raylib" && C:\mingw64\bin\cmake.exe --regenerate-during-build -S"C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test" -B"C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test\build""
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build external/raylib/rebuild_cache: phony external/raylib/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build external/raylib/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build external/raylib/CMakeFiles/install.util: CUSTOM_COMMAND external/raylib/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test\build\external\raylib" && C:\mingw64\bin\cmake.exe -P cmake_install.cmake"
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build external/raylib/install: phony external/raylib/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build external/raylib/CMakeFiles/install/local.util: CUSTOM_COMMAND external/raylib/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test\build\external\raylib" && C:\mingw64\bin\cmake.exe -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build external/raylib/install/local: phony external/raylib/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build external/raylib/CMakeFiles/install/strip.util: CUSTOM_COMMAND external/raylib/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test\build\external\raylib" && C:\mingw64\bin\cmake.exe -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build external/raylib/install/strip: phony external/raylib/CMakeFiles/install/strip.util
+
+
+#############################################
+# Custom command for external\raylib\CMakeFiles\uninstall
+
+build external/raylib/CMakeFiles/uninstall | ${cmake_ninja_workdir}external/raylib/CMakeFiles/uninstall: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test\build\external\raylib" && C:\mingw64\bin\cmake.exe -P "C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/external/raylib/cmake_uninstall.cmake""
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target raylib
+
+
+#############################################
+# Order-only phony target for raylib
+
+build cmake_object_order_depends_target_raylib: phony || cmake_object_order_depends_target_glfw
+
+build external/raylib/raylib/CMakeFiles/raylib.dir/rcore.c.obj: C_COMPILER__raylib_unscanned_Debug C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/src/rcore.c || cmake_object_order_depends_target_raylib
+  DEFINES = -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -D_CRT_SECURE_NO_WARNINGS
+  DEP_FILE = external\raylib\raylib\CMakeFiles\raylib.dir\rcore.c.obj.d
+  FLAGS = -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=gnu99
+  INCLUDES = -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src" -isystem "C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/include"
+  OBJECT_DIR = external\raylib\raylib\CMakeFiles\raylib.dir
+  OBJECT_FILE_DIR = external\raylib\raylib\CMakeFiles\raylib.dir
+
+build external/raylib/raylib/CMakeFiles/raylib.dir/rmodels.c.obj: C_COMPILER__raylib_unscanned_Debug C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/src/rmodels.c || cmake_object_order_depends_target_raylib
+  DEFINES = -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -D_CRT_SECURE_NO_WARNINGS
+  DEP_FILE = external\raylib\raylib\CMakeFiles\raylib.dir\rmodels.c.obj.d
+  FLAGS = -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=gnu99
+  INCLUDES = -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src" -isystem "C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/include"
+  OBJECT_DIR = external\raylib\raylib\CMakeFiles\raylib.dir
+  OBJECT_FILE_DIR = external\raylib\raylib\CMakeFiles\raylib.dir
+
+build external/raylib/raylib/CMakeFiles/raylib.dir/rshapes.c.obj: C_COMPILER__raylib_unscanned_Debug C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/src/rshapes.c || cmake_object_order_depends_target_raylib
+  DEFINES = -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -D_CRT_SECURE_NO_WARNINGS
+  DEP_FILE = external\raylib\raylib\CMakeFiles\raylib.dir\rshapes.c.obj.d
+  FLAGS = -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=gnu99
+  INCLUDES = -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src" -isystem "C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/include"
+  OBJECT_DIR = external\raylib\raylib\CMakeFiles\raylib.dir
+  OBJECT_FILE_DIR = external\raylib\raylib\CMakeFiles\raylib.dir
+
+build external/raylib/raylib/CMakeFiles/raylib.dir/rtext.c.obj: C_COMPILER__raylib_unscanned_Debug C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/src/rtext.c || cmake_object_order_depends_target_raylib
+  DEFINES = -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -D_CRT_SECURE_NO_WARNINGS
+  DEP_FILE = external\raylib\raylib\CMakeFiles\raylib.dir\rtext.c.obj.d
+  FLAGS = -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=gnu99
+  INCLUDES = -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src" -isystem "C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/include"
+  OBJECT_DIR = external\raylib\raylib\CMakeFiles\raylib.dir
+  OBJECT_FILE_DIR = external\raylib\raylib\CMakeFiles\raylib.dir
+
+build external/raylib/raylib/CMakeFiles/raylib.dir/rtextures.c.obj: C_COMPILER__raylib_unscanned_Debug C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/src/rtextures.c || cmake_object_order_depends_target_raylib
+  DEFINES = -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -D_CRT_SECURE_NO_WARNINGS
+  DEP_FILE = external\raylib\raylib\CMakeFiles\raylib.dir\rtextures.c.obj.d
+  FLAGS = -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=gnu99
+  INCLUDES = -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src" -isystem "C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/include"
+  OBJECT_DIR = external\raylib\raylib\CMakeFiles\raylib.dir
+  OBJECT_FILE_DIR = external\raylib\raylib\CMakeFiles\raylib.dir
+
+build external/raylib/raylib/CMakeFiles/raylib.dir/utils.c.obj: C_COMPILER__raylib_unscanned_Debug C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/src/utils.c || cmake_object_order_depends_target_raylib
+  DEFINES = -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -D_CRT_SECURE_NO_WARNINGS
+  DEP_FILE = external\raylib\raylib\CMakeFiles\raylib.dir\utils.c.obj.d
+  FLAGS = -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=gnu99
+  INCLUDES = -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src" -isystem "C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/include"
+  OBJECT_DIR = external\raylib\raylib\CMakeFiles\raylib.dir
+  OBJECT_FILE_DIR = external\raylib\raylib\CMakeFiles\raylib.dir
+
+build external/raylib/raylib/CMakeFiles/raylib.dir/raudio.c.obj: C_COMPILER__raylib_unscanned_Debug C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/src/raudio.c || cmake_object_order_depends_target_raylib
+  DEFINES = -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -D_CRT_SECURE_NO_WARNINGS
+  DEP_FILE = external\raylib\raylib\CMakeFiles\raylib.dir\raudio.c.obj.d
+  FLAGS = -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=gnu99
+  INCLUDES = -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src" -isystem "C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/include"
+  OBJECT_DIR = external\raylib\raylib\CMakeFiles\raylib.dir
+  OBJECT_FILE_DIR = external\raylib\raylib\CMakeFiles\raylib.dir
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target raylib
+
+
+#############################################
+# Link the static library external\raylib\raylib\libraylib.a
+
+build external/raylib/raylib/libraylib.a: C_STATIC_LIBRARY_LINKER__raylib_Debug external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/context.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/init.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/input.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/monitor.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/platform.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/vulkan.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/window.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/egl_context.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_init.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_window.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_module.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_time.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_thread.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_init.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_window.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/wgl_context.c.obj external/raylib/raylib/CMakeFiles/raylib.dir/rcore.c.obj external/raylib/raylib/CMakeFiles/raylib.dir/rmodels.c.obj external/raylib/raylib/CMakeFiles/raylib.dir/rshapes.c.obj external/raylib/raylib/CMakeFiles/raylib.dir/rtext.c.obj external/raylib/raylib/CMakeFiles/raylib.dir/rtextures.c.obj external/raylib/raylib/CMakeFiles/raylib.dir/utils.c.obj external/raylib/raylib/CMakeFiles/raylib.dir/raudio.c.obj || external/raylib/raylib/external/glfw/src/glfw
+  LANGUAGE_COMPILE_FLAGS = -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g
+  OBJECT_DIR = external\raylib\raylib\CMakeFiles\raylib.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = external\raylib\raylib\libraylib.a
+  TARGET_PDB = raylib.a.dbg
+
+
+#############################################
+# Utility command for package
+
+build external/raylib/raylib/CMakeFiles/package.util: CUSTOM_COMMAND external/raylib/raylib/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test\build" && C:\mingw64\bin\cpack.exe --config ./CPackConfig.cmake"
+  DESC = Run CPack packaging tool...
+  pool = console
+  restat = 1
+
+build external/raylib/raylib/package: phony external/raylib/raylib/CMakeFiles/package.util
+
+
+#############################################
+# Utility command for package_source
+
+build external/raylib/raylib/CMakeFiles/package_source.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test\build" && C:\mingw64\bin\cpack.exe --config ./CPackSourceConfig.cmake "C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/CPackSourceConfig.cmake""
+  DESC = Run CPack packaging tool for source...
+  pool = console
+  restat = 1
+
+build external/raylib/raylib/package_source: phony external/raylib/raylib/CMakeFiles/package_source.util
+
+
+#############################################
+# Utility command for edit_cache
+
+build external/raylib/raylib/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test\build\external\raylib\raylib" && C:\mingw64\bin\cmake.exe -E echo "No interactive CMake dialog available.""
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build external/raylib/raylib/edit_cache: phony external/raylib/raylib/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build external/raylib/raylib/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test\build\external\raylib\raylib" && C:\mingw64\bin\cmake.exe --regenerate-during-build -S"C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test" -B"C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test\build""
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build external/raylib/raylib/rebuild_cache: phony external/raylib/raylib/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build external/raylib/raylib/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build external/raylib/raylib/CMakeFiles/install.util: CUSTOM_COMMAND external/raylib/raylib/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test\build\external\raylib\raylib" && C:\mingw64\bin\cmake.exe -P cmake_install.cmake"
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build external/raylib/raylib/install: phony external/raylib/raylib/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build external/raylib/raylib/CMakeFiles/install/local.util: CUSTOM_COMMAND external/raylib/raylib/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test\build\external\raylib\raylib" && C:\mingw64\bin\cmake.exe -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build external/raylib/raylib/install/local: phony external/raylib/raylib/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build external/raylib/raylib/CMakeFiles/install/strip.util: CUSTOM_COMMAND external/raylib/raylib/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test\build\external\raylib\raylib" && C:\mingw64\bin\cmake.exe -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build external/raylib/raylib/install/strip: phony external/raylib/raylib/CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/cmake/GlfwImport.cmake
+# =============================================================================
+
+
+#############################################
+# Utility command for package
+
+build external/raylib/raylib/external/glfw/CMakeFiles/package.util: CUSTOM_COMMAND external/raylib/raylib/external/glfw/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test\build" && C:\mingw64\bin\cpack.exe --config ./CPackConfig.cmake"
+  DESC = Run CPack packaging tool...
+  pool = console
+  restat = 1
+
+build external/raylib/raylib/external/glfw/package: phony external/raylib/raylib/external/glfw/CMakeFiles/package.util
+
+
+#############################################
+# Utility command for package_source
+
+build external/raylib/raylib/external/glfw/CMakeFiles/package_source.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test\build" && C:\mingw64\bin\cpack.exe --config ./CPackSourceConfig.cmake "C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/CPackSourceConfig.cmake""
+  DESC = Run CPack packaging tool for source...
+  pool = console
+  restat = 1
+
+build external/raylib/raylib/external/glfw/package_source: phony external/raylib/raylib/external/glfw/CMakeFiles/package_source.util
+
+
+#############################################
+# Utility command for edit_cache
+
+build external/raylib/raylib/external/glfw/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test\build\external\raylib\raylib\external\glfw" && C:\mingw64\bin\cmake.exe -E echo "No interactive CMake dialog available.""
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build external/raylib/raylib/external/glfw/edit_cache: phony external/raylib/raylib/external/glfw/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build external/raylib/raylib/external/glfw/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test\build\external\raylib\raylib\external\glfw" && C:\mingw64\bin\cmake.exe --regenerate-during-build -S"C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test" -B"C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test\build""
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build external/raylib/raylib/external/glfw/rebuild_cache: phony external/raylib/raylib/external/glfw/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build external/raylib/raylib/external/glfw/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build external/raylib/raylib/external/glfw/CMakeFiles/install.util: CUSTOM_COMMAND external/raylib/raylib/external/glfw/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test\build\external\raylib\raylib\external\glfw" && C:\mingw64\bin\cmake.exe -P cmake_install.cmake"
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build external/raylib/raylib/external/glfw/install: phony external/raylib/raylib/external/glfw/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build external/raylib/raylib/external/glfw/CMakeFiles/install/local.util: CUSTOM_COMMAND external/raylib/raylib/external/glfw/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test\build\external\raylib\raylib\external\glfw" && C:\mingw64\bin\cmake.exe -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build external/raylib/raylib/external/glfw/install/local: phony external/raylib/raylib/external/glfw/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build external/raylib/raylib/external/glfw/CMakeFiles/install/strip.util: CUSTOM_COMMAND external/raylib/raylib/external/glfw/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test\build\external\raylib\raylib\external\glfw" && C:\mingw64\bin\cmake.exe -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build external/raylib/raylib/external/glfw/install/strip: phony external/raylib/raylib/external/glfw/CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for OBJECT_LIBRARY target glfw
+
+
+#############################################
+# Order-only phony target for glfw
+
+build cmake_object_order_depends_target_glfw: phony || .
+
+build external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/context.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/src/external/glfw/src/context.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir\context.c.obj.d
+  FLAGS = -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -Wall
+  INCLUDES = -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/include" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/src" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/external/raylib/raylib/external/glfw/src"
+  OBJECT_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+
+build external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/init.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/src/external/glfw/src/init.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir\init.c.obj.d
+  FLAGS = -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -Wall
+  INCLUDES = -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/include" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/src" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/external/raylib/raylib/external/glfw/src"
+  OBJECT_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+
+build external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/input.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/src/external/glfw/src/input.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir\input.c.obj.d
+  FLAGS = -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -Wall
+  INCLUDES = -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/include" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/src" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/external/raylib/raylib/external/glfw/src"
+  OBJECT_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+
+build external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/monitor.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/src/external/glfw/src/monitor.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir\monitor.c.obj.d
+  FLAGS = -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -Wall
+  INCLUDES = -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/include" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/src" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/external/raylib/raylib/external/glfw/src"
+  OBJECT_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+
+build external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/platform.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/src/external/glfw/src/platform.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir\platform.c.obj.d
+  FLAGS = -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -Wall
+  INCLUDES = -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/include" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/src" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/external/raylib/raylib/external/glfw/src"
+  OBJECT_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+
+build external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/vulkan.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/src/external/glfw/src/vulkan.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir\vulkan.c.obj.d
+  FLAGS = -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -Wall
+  INCLUDES = -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/include" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/src" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/external/raylib/raylib/external/glfw/src"
+  OBJECT_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+
+build external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/window.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/src/external/glfw/src/window.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir\window.c.obj.d
+  FLAGS = -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -Wall
+  INCLUDES = -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/include" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/src" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/external/raylib/raylib/external/glfw/src"
+  OBJECT_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+
+build external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/egl_context.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/src/external/glfw/src/egl_context.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir\egl_context.c.obj.d
+  FLAGS = -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -Wall
+  INCLUDES = -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/include" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/src" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/external/raylib/raylib/external/glfw/src"
+  OBJECT_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+
+build external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/src/external/glfw/src/osmesa_context.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir\osmesa_context.c.obj.d
+  FLAGS = -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -Wall
+  INCLUDES = -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/include" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/src" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/external/raylib/raylib/external/glfw/src"
+  OBJECT_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+
+build external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_init.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/src/external/glfw/src/null_init.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir\null_init.c.obj.d
+  FLAGS = -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -Wall
+  INCLUDES = -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/include" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/src" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/external/raylib/raylib/external/glfw/src"
+  OBJECT_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+
+build external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/src/external/glfw/src/null_monitor.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir\null_monitor.c.obj.d
+  FLAGS = -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -Wall
+  INCLUDES = -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/include" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/src" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/external/raylib/raylib/external/glfw/src"
+  OBJECT_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+
+build external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_window.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/src/external/glfw/src/null_window.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir\null_window.c.obj.d
+  FLAGS = -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -Wall
+  INCLUDES = -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/include" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/src" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/external/raylib/raylib/external/glfw/src"
+  OBJECT_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+
+build external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/src/external/glfw/src/null_joystick.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir\null_joystick.c.obj.d
+  FLAGS = -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -Wall
+  INCLUDES = -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/include" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/src" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/external/raylib/raylib/external/glfw/src"
+  OBJECT_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+
+build external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_module.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/src/external/glfw/src/win32_module.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir\win32_module.c.obj.d
+  FLAGS = -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -Wall
+  INCLUDES = -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/include" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/src" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/external/raylib/raylib/external/glfw/src"
+  OBJECT_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+
+build external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_time.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/src/external/glfw/src/win32_time.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir\win32_time.c.obj.d
+  FLAGS = -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -Wall
+  INCLUDES = -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/include" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/src" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/external/raylib/raylib/external/glfw/src"
+  OBJECT_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+
+build external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_thread.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/src/external/glfw/src/win32_thread.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir\win32_thread.c.obj.d
+  FLAGS = -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -Wall
+  INCLUDES = -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/include" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/src" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/external/raylib/raylib/external/glfw/src"
+  OBJECT_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+
+build external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_init.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/src/external/glfw/src/win32_init.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir\win32_init.c.obj.d
+  FLAGS = -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -Wall
+  INCLUDES = -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/include" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/src" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/external/raylib/raylib/external/glfw/src"
+  OBJECT_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+
+build external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/src/external/glfw/src/win32_joystick.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir\win32_joystick.c.obj.d
+  FLAGS = -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -Wall
+  INCLUDES = -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/include" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/src" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/external/raylib/raylib/external/glfw/src"
+  OBJECT_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+
+build external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/src/external/glfw/src/win32_monitor.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir\win32_monitor.c.obj.d
+  FLAGS = -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -Wall
+  INCLUDES = -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/include" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/src" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/external/raylib/raylib/external/glfw/src"
+  OBJECT_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+
+build external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_window.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/src/external/glfw/src/win32_window.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir\win32_window.c.obj.d
+  FLAGS = -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -Wall
+  INCLUDES = -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/include" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/src" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/external/raylib/raylib/external/glfw/src"
+  OBJECT_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+
+build external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/wgl_context.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/src/external/glfw/src/wgl_context.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir\wgl_context.c.obj.d
+  FLAGS = -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g -std=c99 -Wall
+  INCLUDES = -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/include" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/src" -I"C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/external/raylib/raylib/external/glfw/src"
+  OBJECT_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\raylib\raylib\external\glfw\src\CMakeFiles\glfw.dir
+
+
+
+#############################################
+# Object library glfw
+
+build external/raylib/raylib/external/glfw/src/glfw: phony external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/context.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/init.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/input.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/monitor.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/platform.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/vulkan.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/window.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/egl_context.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_init.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_window.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_module.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_time.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_thread.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_init.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_window.c.obj external/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/wgl_context.c.obj
+
+
+#############################################
+# Utility command for update_mappings
+
+build external/raylib/raylib/external/glfw/src/update_mappings: phony external/raylib/raylib/external/glfw/src/CMakeFiles/update_mappings
+
+
+#############################################
+# Utility command for package
+
+build external/raylib/raylib/external/glfw/src/CMakeFiles/package.util: CUSTOM_COMMAND external/raylib/raylib/external/glfw/src/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test\build" && C:\mingw64\bin\cpack.exe --config ./CPackConfig.cmake"
+  DESC = Run CPack packaging tool...
+  pool = console
+  restat = 1
+
+build external/raylib/raylib/external/glfw/src/package: phony external/raylib/raylib/external/glfw/src/CMakeFiles/package.util
+
+
+#############################################
+# Utility command for package_source
+
+build external/raylib/raylib/external/glfw/src/CMakeFiles/package_source.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test\build" && C:\mingw64\bin\cpack.exe --config ./CPackSourceConfig.cmake "C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/CPackSourceConfig.cmake""
+  DESC = Run CPack packaging tool for source...
+  pool = console
+  restat = 1
+
+build external/raylib/raylib/external/glfw/src/package_source: phony external/raylib/raylib/external/glfw/src/CMakeFiles/package_source.util
+
+
+#############################################
+# Utility command for edit_cache
+
+build external/raylib/raylib/external/glfw/src/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test\build\external\raylib\raylib\external\glfw\src" && C:\mingw64\bin\cmake.exe -E echo "No interactive CMake dialog available.""
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build external/raylib/raylib/external/glfw/src/edit_cache: phony external/raylib/raylib/external/glfw/src/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build external/raylib/raylib/external/glfw/src/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test\build\external\raylib\raylib\external\glfw\src" && C:\mingw64\bin\cmake.exe --regenerate-during-build -S"C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test" -B"C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test\build""
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build external/raylib/raylib/external/glfw/src/rebuild_cache: phony external/raylib/raylib/external/glfw/src/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build external/raylib/raylib/external/glfw/src/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build external/raylib/raylib/external/glfw/src/CMakeFiles/install.util: CUSTOM_COMMAND external/raylib/raylib/external/glfw/src/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test\build\external\raylib\raylib\external\glfw\src" && C:\mingw64\bin\cmake.exe -P cmake_install.cmake"
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build external/raylib/raylib/external/glfw/src/install: phony external/raylib/raylib/external/glfw/src/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build external/raylib/raylib/external/glfw/src/CMakeFiles/install/local.util: CUSTOM_COMMAND external/raylib/raylib/external/glfw/src/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test\build\external\raylib\raylib\external\glfw\src" && C:\mingw64\bin\cmake.exe -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build external/raylib/raylib/external/glfw/src/install/local: phony external/raylib/raylib/external/glfw/src/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build external/raylib/raylib/external/glfw/src/CMakeFiles/install/strip.util: CUSTOM_COMMAND external/raylib/raylib/external/glfw/src/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test\build\external\raylib\raylib\external\glfw\src" && C:\mingw64\bin\cmake.exe -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build external/raylib/raylib/external/glfw/src/install/strip: phony external/raylib/raylib/external/glfw/src/CMakeFiles/install/strip.util
+
+
+#############################################
+# Custom command for external\raylib\raylib\external\glfw\src\CMakeFiles\update_mappings
+
+build external/raylib/raylib/external/glfw/src/CMakeFiles/update_mappings | ${cmake_ninja_workdir}external/raylib/raylib/external/glfw/src/CMakeFiles/update_mappings: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Users\kojom\Documents\C++ Learning\Projects\Raylib test\external\raylib\src\external\glfw\src" && C:\mingw64\bin\cmake.exe -P "C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/external/raylib/src/external/glfw/CMake/GenerateMappings.cmake" mappings.h.in mappings.h"
+  DESC = Updating gamepad mappings from upstream repository
+
 # =============================================================================
 # Target aliases.
 
 build Raylib_Test: phony Raylib_Test.exe
+
+build glfw: phony external/raylib/raylib/external/glfw/src/glfw
+
+build libraylib.a: phony external/raylib/raylib/libraylib.a
+
+build raylib: phony external/raylib/raylib/libraylib.a
+
+build uninstall: phony external/raylib/uninstall
+
+build update_mappings: phony external/raylib/raylib/external/glfw/src/update_mappings
 
 # =============================================================================
 # Folder targets.
@@ -109,7 +855,35 @@ build Raylib_Test: phony Raylib_Test.exe
 #############################################
 # Folder: C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build
 
-build all: phony Raylib_Test.exe
+build all: phony Raylib_Test.exe external/raylib/all
+
+# =============================================================================
+
+#############################################
+# Folder: C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/external/raylib
+
+build external/raylib/all: phony external/raylib/raylib/all
+
+# =============================================================================
+
+#############################################
+# Folder: C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/external/raylib/raylib
+
+build external/raylib/raylib/all: phony external/raylib/raylib/libraylib.a external/raylib/raylib/external/glfw/all
+
+# =============================================================================
+
+#############################################
+# Folder: C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/external/raylib/raylib/external/glfw
+
+build external/raylib/raylib/external/glfw/all: phony external/raylib/raylib/external/glfw/src/all
+
+# =============================================================================
+
+#############################################
+# Folder: C:/Users/kojom/Documents/C++ Learning/Projects/Raylib test/build/external/raylib/raylib/external/glfw/src
+
+build external/raylib/raylib/external/glfw/src/all: phony external/raylib/raylib/external/glfw/src/glfw
 
 # =============================================================================
 # Built-in targets
@@ -118,14 +892,14 @@ build all: phony Raylib_Test.exe
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/CMakeLists.txt C$:/mingw64/share/cmake-3.30/Modules/CMakeCInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeRCInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/GNU-C.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/GNU.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU-C.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-Initialize.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-windres.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/WindowsPaths.cmake CMakeCache.txt CMakeFiles/3.30.0/CMakeCCompiler.cmake CMakeFiles/3.30.0/CMakeCXXCompiler.cmake CMakeFiles/3.30.0/CMakeRCCompiler.cmake CMakeFiles/3.30.0/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/CMakeLists.txt C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/CMakeLists.txt C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/CMakeOptions.txt C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/cmake/AddIfFlagCompiles.cmake C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/cmake/BuildOptions.cmake C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/cmake/CompileDefinitions.cmake C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/cmake/CompilerFlags.cmake C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/cmake/EnumOption.cmake C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/cmake/GlfwImport.cmake C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/cmake/InstallConfigurations.cmake C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/cmake/JoinPaths.cmake C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/cmake/LibraryConfigurations.cmake C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/cmake/LibraryPathToLinkerFlags.cmake C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/cmake/PackConfigurations.cmake C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/cmake/ParseConfigHeader.cmake C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/cmake/PopulateConfigVariablesLocally.cmake C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/cmake/Uninstall.cmake C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/cmake/raylib-config-version.cmake C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/raylib.pc.in C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/src/CMakeLists.txt C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/src/external/glfw/CMakeLists.txt C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/src/external/glfw/CMake/glfw3.pc.in C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/src/external/glfw/CMake/glfw3Config.cmake.in C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/src/external/glfw/src/CMakeLists.txt C$:/mingw64/share/cmake-3.30/Modules/BasicConfigVersion-SameMajorVersion.cmake.in C$:/mingw64/share/cmake-3.30/Modules/CMakeCInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeDependentOption.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakePackageConfigHelpers.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeRCInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake C$:/mingw64/share/cmake-3.30/Modules/CPack.cmake C$:/mingw64/share/cmake-3.30/Modules/CPackComponent.cmake C$:/mingw64/share/cmake-3.30/Modules/CheckCCompilerFlag.cmake C$:/mingw64/share/cmake-3.30/Modules/CheckCSourceCompiles.cmake C$:/mingw64/share/cmake-3.30/Modules/CheckIncludeFile.cmake C$:/mingw64/share/cmake-3.30/Modules/CheckLibraryExists.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/GNU-C.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/GNU.cmake C$:/mingw64/share/cmake-3.30/Modules/FindOpenGL.cmake C$:/mingw64/share/cmake-3.30/Modules/FindPackageHandleStandardArgs.cmake C$:/mingw64/share/cmake-3.30/Modules/FindPackageMessage.cmake C$:/mingw64/share/cmake-3.30/Modules/FindThreads.cmake C$:/mingw64/share/cmake-3.30/Modules/GNUInstallDirs.cmake C$:/mingw64/share/cmake-3.30/Modules/Internal/CheckCompilerFlag.cmake C$:/mingw64/share/cmake-3.30/Modules/Internal/CheckFlagCommonConfig.cmake C$:/mingw64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU-C.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-Initialize.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-windres.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/WindowsPaths.cmake C$:/mingw64/share/cmake-3.30/Modules/WriteBasicConfigVersionFile.cmake C$:/mingw64/share/cmake-3.30/Templates/CPackConfig.cmake.in CMakeCache.txt CMakeFiles/3.30.0/CMakeCCompiler.cmake CMakeFiles/3.30.0/CMakeCXXCompiler.cmake CMakeFiles/3.30.0/CMakeRCCompiler.cmake CMakeFiles/3.30.0/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/CMakeLists.txt C$:/mingw64/share/cmake-3.30/Modules/CMakeCInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeRCInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/GNU-C.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/GNU.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU-C.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-Initialize.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-windres.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/WindowsPaths.cmake CMakeCache.txt CMakeFiles/3.30.0/CMakeCCompiler.cmake CMakeFiles/3.30.0/CMakeCXXCompiler.cmake CMakeFiles/3.30.0/CMakeRCCompiler.cmake CMakeFiles/3.30.0/CMakeSystem.cmake: phony
+build C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/CMakeLists.txt C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/CMakeLists.txt C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/CMakeOptions.txt C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/cmake/AddIfFlagCompiles.cmake C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/cmake/BuildOptions.cmake C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/cmake/CompileDefinitions.cmake C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/cmake/CompilerFlags.cmake C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/cmake/EnumOption.cmake C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/cmake/GlfwImport.cmake C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/cmake/InstallConfigurations.cmake C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/cmake/JoinPaths.cmake C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/cmake/LibraryConfigurations.cmake C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/cmake/LibraryPathToLinkerFlags.cmake C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/cmake/PackConfigurations.cmake C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/cmake/ParseConfigHeader.cmake C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/cmake/PopulateConfigVariablesLocally.cmake C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/cmake/Uninstall.cmake C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/cmake/raylib-config-version.cmake C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/raylib.pc.in C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/src/CMakeLists.txt C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/src/external/glfw/CMakeLists.txt C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/src/external/glfw/CMake/glfw3.pc.in C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/src/external/glfw/CMake/glfw3Config.cmake.in C$:/Users/kojom/Documents/C++$ Learning/Projects/Raylib$ test/external/raylib/src/external/glfw/src/CMakeLists.txt C$:/mingw64/share/cmake-3.30/Modules/BasicConfigVersion-SameMajorVersion.cmake.in C$:/mingw64/share/cmake-3.30/Modules/CMakeCInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeDependentOption.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakePackageConfigHelpers.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeRCInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake C$:/mingw64/share/cmake-3.30/Modules/CPack.cmake C$:/mingw64/share/cmake-3.30/Modules/CPackComponent.cmake C$:/mingw64/share/cmake-3.30/Modules/CheckCCompilerFlag.cmake C$:/mingw64/share/cmake-3.30/Modules/CheckCSourceCompiles.cmake C$:/mingw64/share/cmake-3.30/Modules/CheckIncludeFile.cmake C$:/mingw64/share/cmake-3.30/Modules/CheckLibraryExists.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/GNU-C.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/GNU.cmake C$:/mingw64/share/cmake-3.30/Modules/FindOpenGL.cmake C$:/mingw64/share/cmake-3.30/Modules/FindPackageHandleStandardArgs.cmake C$:/mingw64/share/cmake-3.30/Modules/FindPackageMessage.cmake C$:/mingw64/share/cmake-3.30/Modules/FindThreads.cmake C$:/mingw64/share/cmake-3.30/Modules/GNUInstallDirs.cmake C$:/mingw64/share/cmake-3.30/Modules/Internal/CheckCompilerFlag.cmake C$:/mingw64/share/cmake-3.30/Modules/Internal/CheckFlagCommonConfig.cmake C$:/mingw64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU-C.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-Initialize.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-windres.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/WindowsPaths.cmake C$:/mingw64/share/cmake-3.30/Modules/WriteBasicConfigVersionFile.cmake C$:/mingw64/share/cmake-3.30/Templates/CPackConfig.cmake.in CMakeCache.txt CMakeFiles/3.30.0/CMakeCCompiler.cmake CMakeFiles/3.30.0/CMakeCXXCompiler.cmake CMakeFiles/3.30.0/CMakeRCCompiler.cmake CMakeFiles/3.30.0/CMakeSystem.cmake: phony
 
 
 #############################################
