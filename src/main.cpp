@@ -12,7 +12,7 @@ public:
     double x_vel, y_vel;
     const int width = 50;
     const int height = 50;
-    const int speed = 1;
+    double speed = 0.5;
 
     void draw() {
         DrawRectangle(x - (width / 2), y - (height / 2), width, height, RED);
@@ -67,6 +67,7 @@ private:
 
 public:
     Sound sfx;
+    Sound voice[10];
 
     void draw() {
         text = std::to_string(score).c_str();
@@ -79,6 +80,10 @@ public:
 
         DrawText(text, x, y, size, color);
         frame_count++;
+    }
+
+    int get() {
+        return score;
     }
 
     void change(int increase) {
@@ -105,6 +110,10 @@ int main() {
 
     Score score;
     score.sfx = LoadSound("assets\\coin.mp3");
+    for (int i = 0; i < 10; i++) {
+        std::string buffer = "assets\\" + std::to_string(i + 1) + "0.wav";
+        score.voice[i] = LoadSound(buffer.c_str());
+    }
 
     while (!WindowShouldClose()) {
         BeginDrawing();
@@ -113,7 +122,7 @@ int main() {
         // Player
 
             player.x_vel *= 0.85;
-            player.x_vel += IsKeyDown(KEY_D) - IsKeyDown(KEY_A);
+            player.x_vel += (IsKeyDown(KEY_D) || IsKeyDown(KEY_RIGHT)) - (IsKeyDown(KEY_A) || IsKeyDown(KEY_LEFT));
             player.change_x(player.x_vel * player.speed);
             // Stage Collision
             if (player.x - player.width / 2 < 0) {
@@ -126,7 +135,7 @@ int main() {
             }
 
             player.y_vel *= 0.85;
-            player.y_vel += IsKeyDown(KEY_S) - IsKeyDown(KEY_W);
+            player.y_vel += (IsKeyDown(KEY_S) || IsKeyDown(KEY_DOWN)) - (IsKeyDown(KEY_W) || IsKeyDown(KEY_UP));
             player.change_y(player.y_vel * player.speed);
             // Stage Collision
             if (player.y - player.height / 2 < 0) {
@@ -142,7 +151,11 @@ int main() {
 
             if (coin.touching_player(player)) {
                 score.change(1);
+                player.speed += 0.02;
                 PlaySound(score.sfx);
+                if (score.get() < 101 && score.get() % 10 == 0) {
+                    PlaySound(score.voice[(score.get() - 1) / 10]);
+                }
 
                 while(coin.touching_player(player, 100)) {
                     coin.go_random_pos();
@@ -159,6 +172,7 @@ int main() {
                 player.draw_center();
                 DrawText(std::to_string(abs(player.x - coin.x)).c_str(), 5, 5, 20, GREEN); // X Difference
                 DrawText(std::to_string(abs(player.y - coin.y)).c_str(), 5, 25, 20, GREEN); // Y Difference
+                DrawText(std::to_string(player.speed).c_str(), 5, 45, 20, GREEN); // Speed
             }
 
             score.draw();
