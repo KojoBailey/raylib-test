@@ -15,3 +15,8 @@ A custom cursor is included, but it doesn't do anything...
 You can press `i` to show some stats, although this is only useful for development lol.
 
 Can you reach **100 points**? (I haven't added any voicelines past that anyway :P)
+
+## Credits
+All programming is by me (excluding the [Raylib](https://www.raylib.com/index.html) library of course), and the music and voicelines were also recorded and edited by myself.
+
+The only asset I borrowed was the coin pickup sound effect, which I nabbed from [Pixabay](https://pixabay.com/sound-effects/90s-game-ui-6-185099/).
