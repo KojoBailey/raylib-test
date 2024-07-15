@@ -63,17 +63,21 @@ private:
     int x;
     int y = 25;
     int frame_count; 
+    Color color = BLUE;
 
 public:
+    Sound sfx;
+
     void draw() {
         text = std::to_string(score).c_str();
         x = (screen_width / 2) - (MeasureText(text, size) / 2);
 
         if (frame_count > 2) {
             y = 25;
+            color = BLUE;
         }
 
-        DrawText(text, x, y, size, BLUE);
+        DrawText(text, x, y, size, color);
         frame_count++;
     }
 
@@ -81,13 +85,17 @@ public:
         score += increase;
         frame_count = 0;
         y = 15;
+        color = SKYBLUE;
     }
 };
 
 int main() {
     InitWindow(screen_width, screen_height, "Test Game");
+    InitAudioDevice();
     SetTargetFPS(60);
     HideCursor();
+
+    Sound bgm = LoadSound("assets\\music.wav");
 
     Player player;
     player.set_pos(400, 225);
@@ -96,8 +104,7 @@ int main() {
     coin.go_random_pos();
 
     Score score;
-    InitAudioDevice();
-    Sound coin_sfx = LoadSound("C:\\Users\\kojom\\Downloads\\V_sys_039_0.wav");
+    score.sfx = LoadSound("assets\\coin.mp3");
 
     while (!WindowShouldClose()) {
         BeginDrawing();
@@ -135,7 +142,7 @@ int main() {
 
             if (coin.touching_player(player)) {
                 score.change(1);
-                PlaySound(coin_sfx);
+                PlaySound(score.sfx);
 
                 while(coin.touching_player(player, 100)) {
                     coin.go_random_pos();
@@ -155,6 +162,10 @@ int main() {
             }
 
             score.draw();
+
+            if (!IsSoundPlaying(bgm)) {
+                PlaySound(bgm);
+            }
 
         EndDrawing();
     }
